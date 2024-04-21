@@ -34,7 +34,8 @@
 (defn get-worklogs [issue-id]
   (-> (client/get
        (str (:host config) "/rest/api/2/issue/" issue-id "/worklog")
-       {:basic-auth basic-auth})
+       {:basic-auth basic-auth
+        :as :json})
       :body
       :worklogs))
 
